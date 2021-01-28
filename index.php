@@ -5,7 +5,6 @@
     </head>
 
     <body>
-        <p id="ip-address"></p>
         <?php
             function getUserIpAddr(){
                 if(!empty($_SERVER['HTTP_CLIENT_IP'])){
