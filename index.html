@@ -112,13 +112,14 @@
 
         <script>
             function checkIpAddress(){
-                $.getJSON("https://api.ipify.org?format=jsonp", function(data){
+                $.getJSON("https://api.ipify.org?format=json", function(data){
                     if (data.ip.toString()!==document.cookie){
                         window.location.reload(true);
                     }
+                });
             }
         </script>
 
-        <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+        <script src="https://api.ipify.org?format=json&callback=getIP"></script>
         </body>
 </html>
