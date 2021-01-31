@@ -8,28 +8,28 @@
         <div>
             <div><h1>Your public IP Address details:</h1>
                 <p>IP:<b id="ip-address"></b></p></div>
-                <p>Country Name:</p>
-                <p>Country Code:</p>
-                <p>Region Name:</p>
-                <p>Region Code:</p>
-                <p>Postal Code:</p>
-                <p>Continent Name:</p>
-                <p>Continent Code:</p>
-                <p>Latitude:</p>
-                <p>Longitude:</p>
-                <p>Time Zone:</p>
-                <p>Date Time:</p>
+                <p>Country Name: <b id="country-code"></b></p>
+                <p>Country Code: <b id="country-name"></b></p>
+                <p>Region Name: <b id="region-name"></b></p>
+                <p>Region Code: <b id="region-code"></b></p>
+                <p>Postal Code: <b id="postal-code"></b></p>
+                <p>Continent Name: <b id="continent-name"></b></p>
+                <p>Continent Code: <b id="continent-code"></b></p>
+                <p>Latitude: <b id="latitide"></b></p>
+                <p>Longitude: <b id="longitude"></b></p>
+                <p>Time Zone: <b id="timezone"></b></p>
+                <p>Date Time: <b id="datetime"></b></p>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
             function getIP(json) {
                 $("#ip-address").html(json.ip);
-                $.getJSON("http://ip-api.com/json/"+json.ip+"?fields=12133375", )
+                $.getJSON("http://ip-api.com/json/"+json.ip+"?fields=12133375", function(data){
+                    alert(data);
+                });
             }
           </script>
           <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-          <script src="http://ip-api.com/json/{query}?fields=12133375"></script>
-        
     </body>
 </html>
