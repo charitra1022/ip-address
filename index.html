@@ -113,7 +113,7 @@
         <script>
             function checkIpAddress(){
                 $.getJSON("https://api.ipify.org?format=json", function(data){
-                    if (data.ip.toString()!==document.cookie){
+                    if (data.ip.toString() != document.cookie){
                         window.location.reload(true);
                     }
                 });
