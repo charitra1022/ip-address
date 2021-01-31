@@ -6,22 +6,30 @@
 
     <body>
         <div>
-            <div><p>Your public IP Address:<b id="ip-address"></b></p></div>
+            <div><h1>Your public IP Address details:</h1>
+                <p>IP:<b id="ip-address"></b></p></div>
+                <p>Country Name:</p>
+                <p>Country Code:</p>
+                <p>Region Name:</p>
+                <p>Region Code:</p>
+                <p>Postal Code:</p>
+                <p>Continent Name:</p>
+                <p>Continent Code:</p>
+                <p>Latitude:</p>
+                <p>Longitude:</p>
+                <p>Time Zone:</p>
+                <p>Date Time:</p>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script> 
-            /* Add "https://api.ipify.org?format=json" statement 
-               this will communicate with the ipify servers in 
-               order to retrieve the IP address $.getJSON will 
-               load JSON-encoded data from the server using a 
-               GET HTTP request */ 
-      
-            $.getJSON("https://api.ipify.org?format=json", function(data) { 
-                // Setting text of element P with id gfg 
-                $("#ip-address").html(data.ip); 
-            }) 
-        </script> 
+        <script>
+            function getIP(json) {
+                $("#ip-address").html(json.ip);
+                $.getJSON("http://ip-api.com/json/"+json.ip+"?fields=12133375", )
+            }
+          </script>
+          <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+          <script src="http://ip-api.com/json/{query}?fields=12133375"></script>
         
     </body>
 </html>
