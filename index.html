@@ -4,32 +4,121 @@
         <title>Your IP address</title>
     </head>
 
-    <body>
+    <body onload="setInterval(checkIpAddress(), 1000)">
         <div>
             <div><h1>Your public IP Address details:</h1>
-                <p>IP:<b id="ip-address"></b></p></div>
-                <p>Country Name: <b id="country-code"></b></p>
-                <p>Country Code: <b id="country-name"></b></p>
-                <p>Region Name: <b id="region-name"></b></p>
-                <p>Region Code: <b id="region-code"></b></p>
-                <p>Postal Code: <b id="postal-code"></b></p>
-                <p>Continent Name: <b id="continent-name"></b></p>
-                <p>Continent Code: <b id="continent-code"></b></p>
-                <p>Latitude: <b id="latitide"></b></p>
-                <p>Longitude: <b id="longitude"></b></p>
-                <p>Time Zone: <b id="timezone"></b></p>
-                <p>Date Time: <b id="datetime"></b></p>
+                <table>
+                    <tr>
+                        <td>IP Address:</td>
+                        <td id="ip-address"></td>
+                    </tr>
+
+                    <tr>
+                        <td>City: </td>
+                        <td id="city"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Region: </td>
+                        <td id="region-name"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Postal Code: </td>
+                        <td id="postal-code"></td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Country Name: </td></td>
+                        <td id="country-name"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Country Code: </td>
+                        <td id="country-code"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Currency: </td>
+                        <td id="currency"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Internet Service Provider: </td>
+                        <td id="isp"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Latitude: </td>
+                        <td id="latitude"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Longitude: </td>
+                        <td id="longitude"></td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Time Zone: </td>
+                        <td id="timezone"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Date: </td>
+                        <td id="date"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Time: </td>
+                        <td id="time"></td>
+                    </tr>
+                </table>  
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
             function getIP(json) {
                 $("#ip-address").html(json.ip);
+                document.cookie = json.ip.toString();
+                
                 $.getJSON("http://ip-api.com/json/"+json.ip+"?fields=12133375", function(data){
-                    alert(data);
+                    $("#country-name").html(data.country);
+                    $("#country-code").html(data.countryCode);
+
+                    $("#region-name").html(data.regionName);
+                    
+                    $("#postal-code").html(data.zip);
+                    $("#city").html(data.city);
+                    $("#currency").html(data.currency);
+                    $("#isp").html(data.isp);
+
+                   
+                    $("#latitude").html(data.lat);
+                    $("#longitude").html(data.lon);
+
+                    $("#timezone").html(data.timezone);
+                   
                 });
             }
-          </script>
-          <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-    </body>
+        </script>
+        <script>
+            var d = new Date($.now());
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            var date = d.getDate() + "-" + months[d.getMonth()] + "-" + d.getFullYear();
+            var time = d.toLocaleTimeString();
+            $("#date").html(date);
+            $("#time").html(time);
+        </script>
+
+        <script>
+            function checkIpAddress(){
+                $.getJSON("https://api.ipify.org?format=jsonp", function(data){
+                    if (data.ip.toString()!==document.cookie){
+                        window.location.reload(true);
+                    }
+            }
+        </script>
+
+        <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+        </body>
 </html>
