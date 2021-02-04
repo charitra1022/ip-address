@@ -102,14 +102,34 @@
                     var ipDetailsLink = "http://ip-api.com/json/"+data.ip+"?fields=12133375"
                     $("#ip-detail-link").html("<a href='"+ipDetailsLink+"'>Check out Raw Details here</a>")
                     $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>")
-
-                    $.getJSON(ipDetailsLink, function(json){
-                        alert(json)
-                    });
                     
                     $.getJSON(ipDetailsLink, function(data, status){
                         alert(status)
                         $("#country-name").html(data.country)
+                        $("#country-code").html(data.countryCode)
+
+                        $("#region-name").html(data.regionName)
+                        
+                        $("#postal-code").html(data.zip)
+                        $("#city").html(data.city)
+                        $("#currency").html(data.currency)
+                        $("#isp").html(data.isp)
+
+                    
+                        $("#latitude").html(data.lat)
+                        $("#longitude").html(data.lon)
+
+                        $("#timezone").html(data.timezone)
+                    })
+
+
+                    var ipDetailsLink = "https://ipapi.co/"+data.ip+"/json/";
+                    $("#ip-detail-link").html("<a href='"+ipDetailsLink+"'>Check out Raw Details here</a>")
+                    $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>")
+                    
+                    $.getJSON(ipDetailsLink, function(data, status){
+                        alert(status)
+                        $("#country-name").html(data.country_name)
                         $("#country-code").html(data.countryCode)
 
                         $("#region-name").html(data.regionName)
