@@ -123,6 +123,7 @@
             });
 
             var d = new Date($.now());
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
             var date = d.getDate() + "-" + months[d.getMonth()] + "-" + d.getFullYear();
             var time = d.toLocaleTimeString();
             $("#date").html(date);
