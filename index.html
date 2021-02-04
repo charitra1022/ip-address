@@ -109,7 +109,6 @@
                     $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>")
                     
                     $.getJSON(ipDetailsLink, function(data, status){
-                        alert(status)
                         $("#country-name").html(data.country)
                         $("#country-code").html(data.countryCode)
 
@@ -125,8 +124,7 @@
                         $("#longitude").html(data.lon)
 
                         $("#timezone").html(data.timezone)
-                    })*/
-
+                    })
 
                     var ipDetailsLink = "https://ipapi.co/"+data.ip+"/json/";
                     $("#ip-detail-link").html("<a href='"+ipDetailsLink+"'>Check out Raw Details here</a>")
@@ -144,14 +142,36 @@
                         $("#city").html(data.city)
                         $("#currency").html(data.currency)
                         $("#isp").html(data.org)
-
                     
                         $("#latitude").html(data.latitude)
                         $("#longitude").html(data.longitude)
 
                         $("#timezone").html(data.timezone)
-                    })
-                })
+                    })*/
+
+                    var ipDetailsLink = "https://ipinfo.io/?token=ec63c5a229286d"
+                    $("#ip-detail-link").html("<a href='"+ipDetailsLink+"'>Check out Raw Details here</a>")
+                    $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>")
+                    
+                    $.getJSON(ipDetailsLink, function(data){
+                        $("#country-name").html("NA")
+                        $("#country-code").html(data.country)
+
+                        $("#region-name").html(data.region)
+                        
+                        $("#postal-code").html(data.postal)
+                        $("#city").html(data.city)
+                        $("#currency").html("NA")
+                        $("#isp").html(data.org)
+
+                        var loc = data.loc.split(',');
+
+                        $("#latitude").html(loc[0])
+                        $("#longitude").html(loc[1])
+
+                        $("#timezone").html(data.timezone)
+                    })     
+                })           
 
                 var d = new Date($.now())
                 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
