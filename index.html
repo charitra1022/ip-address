@@ -94,13 +94,13 @@
         <script>
             var ipLink = "https://api.ipify.org?format=json";
             $.getJSON(ipLink, function(data){
-                $("#ip-address").html(data.ip);
+                $("#ip-address").html(data.ip)
 
-                document.cookie = data.ip.toString();
+                document.cookie = data.ip.toString()
 
-                var ipDetailsLink = "http://ip-api.com/json/"+data.ip+"?fields=12133375";
-                $("#ip-detail-link").html("<a href='"+ipDetailsLink+"'>Check out Raw Details here</a>");
-                $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>");
+                var ipDetailsLink = "http://ip-api.com/json/"+data.ip+"?fields=12133375"
+                $("#ip-detail-link").html("<a href='"+ipDetailsLink+"'>Check out Raw Details here</a>")
+                $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>")
                 
                 $.getJSON(ipDetailsLink, function(data){
                     alert("done")
@@ -123,7 +123,6 @@
             });
 
             var d = new Date($.now());
-            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
             var date = d.getDate() + "-" + months[d.getMonth()] + "-" + d.getFullYear();
             var time = d.toLocaleTimeString();
             $("#date").html(date);
