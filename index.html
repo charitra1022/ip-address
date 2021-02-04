@@ -3,81 +3,90 @@
     <head>
         <title>Your IP address</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
 
     <body>
         <div id="main">
             <div id="ip-details"><h1>Your public IP Address details:</h1>
-                <table>
-                    <tr>
-                        <td>IPv4 Address:</td>
-                        <td id="ip-address"></td>
-                    </tr>
+                <table class="table table-striped">
+                    <caption>Some details may not be accurate. This depends on your browser privacy, IP Address Servers, VPN, Proxy and other protocols.<br/>
+                        This page is static. To load the latest stats, refresh this page.</caption>
+                    <tbody>
+                        <tr>
+                            <th scope="row">IPv4 Address:</th>
+                            <td id="ip-address">na</td>
+                        </tr>
 
-                    <!--<tr>
-                        <td>IP Version:</td>
-                        <td id="ip-version"></td>
-                    </tr>-->
+                        <!--<tr>
+                            <th scope="row">IP Version:</th>
+                            <td id="ip-version">na</td>
+                        </tr>-->
 
-                    <tr>
-                        <td>City: </td>
-                        <td id="city"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">City: </th>
+                            <td id="city">na</td>
+                        </tr>
 
-                    <tr>
-                        <td>Region: </td>
-                        <td id="region-name"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Region: </th>
+                            <td id="region-name">na</td>
+                        </tr>
 
-                    <tr>
-                        <td>Postal Code: </td>
-                        <td id="postal-code"></td>                        
-                    </tr>
+                        <tr>
+                            <th scope="row">Postal Code: </th>
+                            <td id="postal-code">na</td>                        
+                        </tr>
 
-                    <!--<tr>
-                        <td>Country Name: </td></td>
-                        <td id="country-name"></td>
-                    </tr>-->
+                        <!--<tr>
+                            <th scope="row">Country Name: </th></td>
+                            <td id="country-name">na</td>
+                        </tr>-->
 
-                    <tr>
-                        <td>Country Code: </td>
-                        <td id="country-code"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Country Code: </th>
+                            <td id="country-code">na</td>
+                        </tr>
 
-                    <!--<tr>
-                        <td>Currency: </td>
-                        <td id="currency"></td>
-                    </tr>-->
+                        <!--<tr>
+                            <th scope="row">Currency: </th>
+                            <td id="currency">na</td>
+                        </tr>-->
 
-                    <tr>
-                        <td>ISP: </td>
-                        <td id="isp"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">ISP: </th>
+                            <td id="isp">na</td>
+                        </tr>
 
-                    <tr>
-                        <td>Latitude: </td>
-                        <td id="latitude"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Latitude: </th>
+                            <td id="latitude">na</td>
+                        </tr>
 
-                    <tr>
-                        <td>Longitude: </td>
-                        <td id="longitude"></td>                        
-                    </tr>
+                        <tr>
+                            <th scope="row">Longitude: </th>
+                            <td id="longitude">na</td>                        
+                        </tr>
 
-                    <tr>
-                        <td>Time Zone: </td>
-                        <td id="timezone"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Time Zone: </th>
+                            <td id="timezone">na</td>
+                        </tr>
 
-                    <tr>
-                        <td>Date: </td>
-                        <td id="date"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Date: </th>
+                            <td id="date">na</td>
+                        </tr>
 
-                    <tr>
-                        <td>Time: </td>
-                        <td id="time"></td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Time: </th>
+                            <td id="time">na</td>
+                        </tr>
+                    </tbody>
                 </table>  
             </div>
 
