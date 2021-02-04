@@ -102,6 +102,7 @@
                 $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>");
                 
                 $.getJSON(ipDetailsLink, function(data){
+                    alert("done")
                     $("#country-name").html(data.country)
                     $("#country-code").html(data.countryCode)
 
