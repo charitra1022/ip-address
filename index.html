@@ -4,7 +4,7 @@
         <title>Your IP address</title>
     </head>
 
-    <body onload="setInterval(checkIpAddress(), 1000)">
+    <body>
         <div>
             <div><h1>Your public IP Address details:</h1>
                 <table>
@@ -73,53 +73,49 @@
                         <td id="time"></td>
                     </tr>
                 </table>  
+            </div>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
         <script>
-            function getIP(json) {
-                $("#ip-address").html(json.ip);
-                document.cookie = json.ip.toString();
-                
-                $.getJSON("http://ip-api.com/json/"+json.ip+"?fields=12133375", function(data){
-                    $("#country-name").html(data.country);
-                    $("#country-code").html(data.countryCode);
-
-                    $("#region-name").html(data.regionName);
-                    
-                    $("#postal-code").html(data.zip);
-                    $("#city").html(data.city);
-                    $("#currency").html(data.currency);
-                    $("#isp").html(data.isp);
-
-                   
-                    $("#latitude").html(data.lat);
-                    $("#longitude").html(data.lon);
-
-                    $("#timezone").html(data.timezone);
-                   
-                });
-            }
+            $(document).ready(function(){
+                cookieIp = document.cookie.split(' ').join();
+                if (document.cookie) alert(document.cookie)
+            });
         </script>
+
         <script>
+            $.getJSON("https://api.ipify.org?format=json", function(data){
+                $("#ip-address").html(data.ip);
+
+                document.cookie = data.ip.toString();
+                
+                $.getJSON("http://ip-api.com/json/"+data.ip+"?fields=12133375", function(data){
+                    $("#country-name").html(data.country)
+                    $("#country-code").html(data.countryCode)
+
+                    $("#region-name").html(data.regionName)
+                    
+                    $("#postal-code").html(data.zip)
+                    $("#city").html(data.city)
+                    $("#currency").html(data.currency)
+                    $("#isp").html(data.isp)
+
+                
+                    $("#latitude").html(data.lat)
+                    $("#longitude").html(data.lon)
+
+                    $("#timezone").html(data.timezone)
+                });
+            });
+
             var d = new Date($.now());
             var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
             var date = d.getDate() + "-" + months[d.getMonth()] + "-" + d.getFullYear();
             var time = d.toLocaleTimeString();
             $("#date").html(date);
             $("#time").html(time);
-        </script>
-
-        <script>
-            function checkIpAddress(){
-                $.getJSON("https://api.ipify.org?format=json", function(data){
-                    if (data.ip.toString() != document.cookie){
-                        window.location.reload(true);
-                    }
-                });
-            }
-        </script>
-
-        <script src="https://api.ipify.org?format=json&callback=getIP"></script>
-        </body>
+        </script>    
+    </body>
 </html>
