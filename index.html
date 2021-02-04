@@ -10,14 +10,14 @@
             <div id="ip-details"><h1>Your public IP Address details:</h1>
                 <table>
                     <tr>
-                        <td>IP Address:</td>
+                        <td>IPv4 Address:</td>
                         <td id="ip-address"></td>
                     </tr>
 
-                    <tr>
+                    <!--<tr>
                         <td>IP Version:</td>
                         <td id="ip-version"></td>
-                    </tr>
+                    </tr>-->
 
                     <tr>
                         <td>City: </td>
@@ -34,20 +34,20 @@
                         <td id="postal-code"></td>                        
                     </tr>
 
-                    <tr>
+                    <!--<tr>
                         <td>Country Name: </td></td>
                         <td id="country-name"></td>
-                    </tr>
+                    </tr>-->
 
                     <tr>
                         <td>Country Code: </td>
                         <td id="country-code"></td>
                     </tr>
 
-                    <tr>
+                    <!--<tr>
                         <td>Currency: </td>
                         <td id="currency"></td>
-                    </tr>
+                    </tr>-->
 
                     <tr>
                         <td>Internet Service Provider: </td>
@@ -154,14 +154,12 @@
                     $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>")
                     
                     $.getJSON(ipDetailsLink, function(data){
-                        $("#country-name").html("NA")
                         $("#country-code").html(data.country)
 
                         $("#region-name").html(data.region)
                         
                         $("#postal-code").html(data.postal)
                         $("#city").html(data.city)
-                        $("#currency").html("NA")
                         $("#isp").html(data.org)
 
                         var loc = data.loc.split(',');
