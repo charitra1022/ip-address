@@ -5,8 +5,8 @@
     </head>
 
     <body>
-        <div>
-            <div><h1>Your public IP Address details:</h1>
+        <div id="main">
+            <div id="ip-details"><h1>Your public IP Address details:</h1>
                 <table>
                     <tr>
                         <td>IP Address:</td>
@@ -74,6 +74,11 @@
                     </tr>
                 </table>  
             </div>
+
+            <div id="ip-links">
+                <p id="ip-add-link"></p>
+                <p id="ip-detail-link"></p>
+            </div>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -86,12 +91,17 @@
         </script>
 
         <script>
-            $.getJSON("https://api.ipify.org?format=json", function(data){
+            var ipLink = "https://api.ipify.org?format=json";
+            $.getJSON(ipLink, function(data){
                 $("#ip-address").html(data.ip);
 
                 document.cookie = data.ip.toString();
+
+                var ipDetailsLink = "http://ip-api.com/json/"+data.ip+"?fields=12133375";
+                $("#ip-detail-link").html("<a href='"+ipDetailsLink+"'>Check out Raw Details here</a>");
+                $("#ip-add-link").html("<a href='"+ipLink+"'>Check out Raw IP here</a>");
                 
-                $.getJSON("http://ip-api.com/json/"+data.ip+"?fields=12133375", function(data){
+                $.getJSON(ipDetailsLink, function(data){
                     $("#country-name").html(data.country)
                     $("#country-code").html(data.countryCode)
 
